@@ -9,7 +9,7 @@ import { WomenComponent } from './pages/women/women.component';
 import { LivingComponent } from './pages/living/living.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { NgbModule,NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -23,8 +23,7 @@ import { NgbModule,NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    NgbCarouselModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
