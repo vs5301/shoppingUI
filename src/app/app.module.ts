@@ -18,6 +18,7 @@ import { MenAccessoriesComponent } from './pages/men-page/men-accessories/men-ac
 import { WomenAccessoriesComponent } from './pages/women-page/women-accessories/women-accessories.component';
 import { WomenFootwearComponent } from './pages/women-page/women-footwear/women-footwear.component';
 import { WomenIndianComponent } from './pages/women-page/women-indian/women-indian.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { WomenIndianComponent } from './pages/women-page/women-indian/women-indi
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    NgbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,16 +12,38 @@
         <div class="d-flex justify-content-lg-center w-100">
           <ul class="h5 navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-dark " routerLinkActive="is-active"  routerLink="/home" [routerLinkActiveOptions]="{exact:true}">HOME</a>
+                 <a class="nav-link text-dark" type="button" routerLinkActive="is-active"  routerLink="/home" [routerLinkActiveOptions]="{exact:true}">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" routerLinkActive="is-active"  routerLink="/men">MEN</a>
+              <div ngbDropdown class="d-inline-block">
+                <a class="nav-link text-dark" type="button" id="dropdownBasic2" ngbDropdownToggle routerLinkActive="is-active">MEN</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a ngbDropdownItem class="custom-bg-hover" href="/men-footwear">Footwear</a>
+                  <a ngbDropdownItem class="custom-bg-hover" href="/men-indian">Ethnic Wear</a>
+                  <a ngbDropdownItem class="custom-bg-hover" href="/men-accessories">Accessories</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" routerLinkActive="is-active"  routerLink="/women">WOMEN</a>
+              <div ngbDropdown class="d-inline-block">
+                <a class="nav-link text-dark" type="button" id="dropdownBasic3" ngbDropdownToggle routerLinkActive="is-active">WOMEN</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+                  <a ngbDropdownItem class="custom-bg-hover" href="/women-footwear">Footwear</a>
+                  <a ngbDropdownItem class="custom-bg-hover" href="/women-indian">Ethnic Wear</a>
+                  <a ngbDropdownItem class="custom-bg-hover" href="/women-accessories">Accessories</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark " routerLinkActive="is-active"  routerLink="/living">LIVING</a>
+              <div ngbDropdown class="d-inline-block">
+                <a class="nav-link text-dark" type="button" id="dropdownBasic4" ngbDropdownToggle routerLinkActive="is-active">LIVING</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+                  <button ngbDropdownItem>Action - 1</button>
+                  <button ngbDropdownItem>Another Action</button>
+                  <button ngbDropdownItem>Something else is here</button>
+                </div>
+              </div>
+
             </li>
           </ul>
         </div>
@@ -31,7 +53,6 @@
         <a routerLink="cart" class=" nav-link fs-4 me-4 ">
           <i class="bi bi-bag-fill"></i>
         <div class="cart-items">
-          <!-- {{}} -->
         </div>
       </a>
   
