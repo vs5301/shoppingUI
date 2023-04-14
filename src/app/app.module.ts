@@ -18,7 +18,12 @@ import { MenAccessoriesComponent } from './pages/men-page/men-accessories/men-ac
 import { WomenAccessoriesComponent } from './pages/women-page/women-accessories/women-accessories.component';
 import { WomenFootwearComponent } from './pages/women-page/women-footwear/women-footwear.component';
 import { WomenIndianComponent } from './pages/women-page/women-indian/women-indian.component';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './shared/cart/cart.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore'
 
 @NgModule({
   declarations: [
@@ -34,14 +39,18 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
     MenAccessoriesComponent,
     WomenAccessoriesComponent,
     WomenFootwearComponent,
-    WomenIndianComponent
+    WomenIndianComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     NgbCarouselModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

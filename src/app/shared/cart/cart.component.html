@@ -1,0 +1,56 @@
+<!-- <div *ngIf="products.length !=0; then vatsal; else vats"></div> -->
+
+<ng-container *ngIf="products.length !=0" >
+    <!-- <div class="cart-overlay" [class.transparentBcg]="removeClass"> -->
+    <div class="cart-overlay">
+        <!-- <div class="cart" [class.showCart]="removeClass"> -->
+        <div class="cart">
+          <span  routerLink="/products" class="close-cart"><i class="far fa-window-close"></i></span>
+          <h2>your cart</h2>
+            <div class="cart-content">
+                <!-- cart item -->
+                <div *ngFor="let item of products">
+                    <div class="cart-item">
+                        <img src="{{item.image}}" alt="product" />
+                        <div>
+                            <h4>{{item.title}}</h4>
+                            <h5>${{item.price}}</h5>
+                            <button (click)="removeItem(item,$event)" class="remove-item">remove</button>
+                        </div>
+                        <div>
+                            <h4>Total Price</h4>
+                            <h5>${{item.totalvalue}}</h5>
+                        </div>
+                        <div>
+                            <i (click)="itemInc(item)" class="fas fa-chevron-up"></i>
+                            <p class="item-amount">
+                                {{item.qantity}}
+                            </p>
+                            <i (click)="itemDec(item)" class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- cart item -->
+            </div>
+            <div class="cart-footer">
+                <h3>your total : $<span class="cart-total">{{grandTotal}}</span></h3>
+                <button (click)="emptyCart()" class="clear-cart banner-btn">PURCHASE</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length ==0 " >
+    <div class="cart-overlay" >
+        <div class="cart">
+          <span  routerLink="/products" class="close-cart"><i class="far fa-window-close"></i></span>
+          <h2>your cart</h2>
+            
+            <div class="cart-footer">
+                <h3>your total : $<span class="cart-total">{{grandTotal}}</span></h3>
+                <button class="clear-cart banner-btn">PURCHASE</button>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shopping-web-app-d41a3": {
+      "hosting": {
+        "shoppingUI": [
+          "shoppingui"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shopping-web-app-d41a3"
+  }
+}
