@@ -50,8 +50,10 @@
       </div>
   
       <div class="d-flex justify-content-end ">
-        <a routerLink="cart" class=" nav-link fs-4 me-4 ">
-          <i class="bi bi-bag-fill"></i>
+        <a routerLink="cart" class=" nav-link fs-4 me-4" (click)="openEnd(content)">
+          <i class="bi bi-bag-fill">
+            
+          </i>
         <div class="cart-items">
         </div>
       </a>
@@ -64,3 +66,16 @@
     </div>
     
   </nav>
+
+  <ng-template #content let-offcanvas>
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title">Offcanvas title</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>One fine body&hellip;</p>
+      <div class="text-end">
+        <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+      </div>
+    </div>
+  </ng-template>
