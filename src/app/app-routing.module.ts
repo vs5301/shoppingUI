@@ -10,6 +10,7 @@ import { MenAccessoriesComponent } from './pages/men-page/men-accessories/men-ac
 import { WomenFootwearComponent } from './pages/women-page/women-footwear/women-footwear.component';
 import { WomenAccessoriesComponent } from './pages/women-page/women-accessories/women-accessories.component';
 import { WomenIndianComponent } from './pages/women-page/women-indian/women-indian.component';
+import { CartComponent } from './shared/cart/cart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'women-footwear', component: WomenFootwearComponent},
   {path: 'women-indian', component: WomenIndianComponent},
   {path: 'women-accessories', component: WomenAccessoriesComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

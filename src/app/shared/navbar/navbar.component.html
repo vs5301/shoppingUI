@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg mx-5" style="background-color: white">
-    <div class="container px-0 mx-3">
-      <a class="navbar-brand mx-0 px-0" href="#">
+<nav class="navbar navbar-expand-lg navbar-dark w-100" style="background-color: rgb(221, 232, 228);">
+    <div class="container mx-0">
+      <a class="navbar-brand ms-5" href="#">
         <img src="./assets/logowithoutText-removebg-preview.png" alt="" width="80" height="70" priority>
       </a>
   
@@ -49,16 +49,12 @@
         </div>
       </div>
   
-      <div class="d-flex justify-content-end ">
-        <a routerLink="cart" class=" nav-link fs-4 me-4" (click)="openEnd(content)">
+      <div class="d-flex align-items-end justify-content-lg-end ps-3">
+        <a class=" nav-link fs-4 me-4" (click)="openEnd(content)">
           <i class="bi bi-bag-fill">
-            
           </i>
-        <div class="cart-items">
-        </div>
-      </a>
-  
-        <a routerLink="login" class="nav-link fs-3">
+        </a>
+        <a routerLink="login" class="nav-link fs-4 me-4">
           <i class="bi bi-person-fill"></i>
         </a>
       </div>
@@ -69,13 +65,30 @@
 
   <ng-template #content let-offcanvas>
     <div class="offcanvas-header">
-      <h4 class="offcanvas-title">Offcanvas title</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+      <h4 class="offcanvas-title">Items in your Cart</h4>
+      <a type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></a>
     </div>
-    <div class="offcanvas-body">
-      <p>One fine body&hellip;</p>
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+    <div class="offcanvas-body d-flex flex-column align-items-center">
+      <div class="card mx-4 my-3" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">Item Name</h3>
+        </div>
+      </div>
+      <div class="card mx-4 my-3" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">Item Name</h3>
+        </div>
+      </div>
+      <div class="card mx-4 my-3" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">Item Name</h3>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-dark mx-5" type="button" routerLinkActive="is-active"  routerLink="/cart" [routerLinkActiveOptions]="{exact:true}">OPEN CART</button>
       </div>
     </div>
   </ng-template>

@@ -1,14 +1,49 @@
-<ng-template #content let-offcanvas>
-	<div class="offcanvas-header">
-		<h4 class="offcanvas-title">Offcanvas title</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+<div class="container mt-4 mb-4">
+	<div class="cart-title">
+		<h1>Check Items in Cart</h1>
 	</div>
-	<div class="offcanvas-body">
-		<p>One fine body&hellip;</p>
-		<div class="text-end">
-			<button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+	<div class="cart-body">
+		<div class="row">
+			<div class="col-3">
+				<div class="card" style="width: 18rem;">
+					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card" style="width: 18rem;">
+					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card" style="width: 18rem;">
+					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card" style="width: 18rem;">
+					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo offcanvas</button>
+</div>
