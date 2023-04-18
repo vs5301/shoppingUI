@@ -26,6 +26,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatDialogModule } from '@angular/material/dialog';
+import { TopwearComponent } from './pages/men-page/topwear/topwear.component';
+import { BottomwearComponent } from './pages/men-page/bottomwear/bottomwear.component';
+import { WesternwearComponent } from './pages/women-page/westernwear/westernwear.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     WomenAccessoriesComponent,
     WomenFootwearComponent,
     WomenIndianComponent,
-    CartComponent
+    CartComponent,
+    TopwearComponent,
+    BottomwearComponent,
+    WesternwearComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

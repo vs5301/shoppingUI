@@ -1,13 +1,14 @@
 <div class="container p-lg-5">
   <div class="row row-1 py-2">
-    <div class="col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let item of livingList">
-      <div class="card card-1">
+    <div class="col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let item of topwearList; index as idx">
+    <div class="card card-1">
         <img [src]="item.imageUrl" class="card-img-top" style=" height: 300px">
         <div class="card-body">
           <div class="card-title mx-3">        
             <h6 class="fw-bold">{{item.title}}</h6>
             <h6 class="fw-normal">{{item.description}}</h6>
-            <h6>{{item.price}}</h6>
+            <h6 class="d-flex gap-2">{{item.price}}</h6>
+            <p class="text-danger">(30% OFF)</p>
           </div>
         </div>
       </div>

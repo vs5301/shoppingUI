@@ -1,53 +1,16 @@
-
-
-
 <div class="container p-lg-5 my-4">
-    <div class="row row-1 py-2">      
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20220623/g3gy/62b3819faeb26921af423d10/ausk_navy_blue_striped_crew-neck_t-shirt.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold"> Ethnic Wear </h6>
-                    <h4> 20-30% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
+  <div class="row row-1 py-2">      
+    <div class="col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let item of menIndianList; index as idx">
+      <div class="card card-1">
+        <img [src]="item.imageUrl" class="card-img-top" style="width:100%; height: 300px">
+        <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
+          <div class="card-title mx-3">        
+            <h6 class="fw-bold">{{item.title}}</h6>
+            <h6 class="fw-normal">{{item.description}}</h6>
+            <h6>{{item.price}}</h6>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20220623/g3gy/62b3819faeb26921af423d10/ausk_navy_blue_striped_crew-neck_t-shirt.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold"> Ethnic Wear </h6>
-                    <h4> 20-30% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.ajio.com/medias/sys_master/root/20220623/g3gy/62b3819faeb26921af423d10/ausk_navy_blue_striped_crew-neck_t-shirt.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold"> Ethnic Wear </h6>
-                    <h4> 20-30% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
+    </div> 
   </div>
-
-  
-  
-  
+</div>

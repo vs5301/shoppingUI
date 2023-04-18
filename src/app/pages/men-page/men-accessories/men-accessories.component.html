@@ -1,52 +1,16 @@
-
-
-
 <div class="container p-lg-5 my-4">
-    <div class="row row-1 py-2">
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2527414/2018/7/3/6edab994-71e5-4779-9d4f-dbb8c9725fdd1530618573918-Roadster-Men-Black-Regular-Fit-Solid-Casual-Shirt-4915306185-1.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold">Casual Wear </h6>
-                    <h4> 30-40% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
+  <div class="row row-1 py-2">
+    <div class="col-12 col-sm-6 col-lg-4 mb-4">
+      <div class="card card-1" *ngFor="let item of menAccessoriesList; index as idx">
+        <img [src]="item.imageUrl" class="card-img-top" style="width:100%; height: 300px">
+        <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
+          <div class="card-title mx-3">        
+            <h6 class="fw-bold">{{item.title}}</h6>
+            <h6 class="fw-normal">{{item.description}}</h6>
+            <h6>{{item.price}}</h6>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2527414/2018/7/3/6edab994-71e5-4779-9d4f-dbb8c9725fdd1530618573918-Roadster-Men-Black-Regular-Fit-Solid-Casual-Shirt-4915306185-1.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold">Casual Wear </h6>
-                    <h4> 30-40% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
-        </div>
-      </div> 
-      <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card card-1">
-          <img
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2527414/2018/7/3/6edab994-71e5-4779-9d4f-dbb8c9725fdd1530618573918-Roadster-Men-Black-Regular-Fit-Solid-Casual-Shirt-4915306185-1.jpg"
-            class="card-img-top" style="width:100%; height: 300px">
-            <div class="card-body text-center" style="background-color: rgb(254, 218, 38);">
-              <div class="card-title mx-3">        
-                    <h6 class="fw-bold">Casual Wear </h6>
-                    <h4> 30-40% OFF</h4>
-                    <h6> Shop now </h6>
-              </div>
-            </div>
-        </div>
     </div> 
-    </div>
   </div>
-  
-  
-  
+</div>

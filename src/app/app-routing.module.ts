@@ -11,6 +11,9 @@ import { WomenFootwearComponent } from './pages/women-page/women-footwear/women-
 import { WomenAccessoriesComponent } from './pages/women-page/women-accessories/women-accessories.component';
 import { WomenIndianComponent } from './pages/women-page/women-indian/women-indian.component';
 import { CartComponent } from './shared/cart/cart.component';
+import { TopwearComponent } from './pages/men-page/topwear/topwear.component';
+import { BottomwearComponent } from './pages/men-page/bottomwear/bottomwear.component';
+import { WesternwearComponent } from './pages/women-page/westernwear/westernwear.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +27,11 @@ const routes: Routes = [
   {path: 'women-footwear', component: WomenFootwearComponent},
   {path: 'women-indian', component: WomenIndianComponent},
   {path: 'women-accessories', component: WomenAccessoriesComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'topwear', component: TopwearComponent},
+  {path: 'bottomwear', component: BottomwearComponent},
+  {path: 'westernwear', component: WesternwearComponent}
+  
 ];
 
 @NgModule({

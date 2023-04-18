@@ -54,6 +54,11 @@ export class DbService {
   //Westernwear Page Data
   westernWearSubject = new BehaviorSubject<any[]>([])
 
+  //Living Page Data
+  livingSubject = new BehaviorSubject<any[]>([])
+
+
+
   $HOME_DOC_LIMIT: number = 6;
   $DOC_LIMIT: number = 50;
 
@@ -262,6 +267,15 @@ export class DbService {
   async getWesternwear() {
     const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.WESTERNWEAR_COLLECTION), (snapshot) => {
       this.westernWearSubject.next(snapshot.docs.map(e => {
+        return e.data()
+      }));
+      this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
+    });
+  }
+
+  async getLiving() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.LIVING_COLLECTION), (snapshot) => {
+      this.livingSubject.next(snapshot.docs.map(e => {
         return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
