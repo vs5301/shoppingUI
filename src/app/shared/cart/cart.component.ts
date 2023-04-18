@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,21 +9,24 @@ import { NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class CartComponent implements OnInit{
 
-  public products: any = []
-  public grandTotal!: number
-  public totalAmount: any
+ cartList: any[] = []
 
-  constructor(config: NgbOffcanvasConfig, private offcanvasService: NgbOffcanvas){
-    config.position = 'end';
-		config.backdropClass = 'bg-info';
-		config.keyboard = false;
-  }
+  constructor(
+    private dbService: DbService
+  ){ }
 
   ngOnInit(): void {
-      
+    this.getData()
   }
 
-  open(content: any) {
-		this.offcanvasService.open(content);
-	}
+  getData(){
+    if(this.dbService.cartSubject.value.length === 0) this.dbService.getCartItems()
+  let cartSub = this.dbService.cartSubject.subscribe((value) => {
+      if(value.length !== 0){
+        this.cartList = [...value]
+        this.dbService.getWindowRef().setTimeout(() => cartSub.unsubscribe, this.dbService.timeoutInterval * 6)
+      }
+    })
+  }
+  
 }

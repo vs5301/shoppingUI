@@ -57,7 +57,8 @@ export class DbService {
   //Living Page Data
   livingSubject = new BehaviorSubject<any[]>([])
 
-
+  //Cart Page Data
+  cartSubject = new BehaviorSubject<any[]>([])
 
   $HOME_DOC_LIMIT: number = 6;
   $DOC_LIMIT: number = 50;
@@ -280,6 +281,15 @@ export class DbService {
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     });
+  }
+
+  async getCartItems(){
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.CART_COLLECTION), (snapshot) => {
+      this.cartSubject.next(snapshot.docs.map(e => {
+        return e.data()
+      }))
+      this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6)
+    })
   }
   
 }

@@ -4,43 +4,14 @@
 	</div>
 	<div class="cart-body">
 		<div class="row">
-			<div class="col-3">
+			<div class="col-3" *ngFor="let item of cartList">
 				<div class="card" style="width: 18rem;">
-					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
+					<img [src]="item.imageUrl" class="card-img-top" alt="...">
 					<div class="card-body">
-					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
-					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
-					<div class="card-body">
-					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
-					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
-					<div class="card-body">
-					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
-					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-					<img src="https://www.thesun.co.uk/wp-content/uploads/2022/08/NINTCHDBPICT000753874275.jpg?strip=all&quality=100&w=1620&h=1080&crop=1" class="card-img-top" alt="...">
-					<div class="card-body">
-					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify </a>
-					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete </a>
+					  <h6 class="fw text-bold">{{item.title}}</h6>
+					  <p class="fw text-normal">{{item.description}}</p>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Modify</a>
+					  <a href="#" class="btn btn-primary ms-4" style="text-align: center;">Delete</a>
 					</div>
 				</div>
 			</div>
