@@ -60,15 +60,30 @@ export class DbService {
   //Cart Page Data
   cartSubject = new BehaviorSubject<any[]>([])
 
-  $HOME_DOC_LIMIT: number = 6;
-  $DOC_LIMIT: number = 50;
+  $HOME_DOC_LIMIT: number = 3;
+  $DOC_LIMIT: number = 6;
 
     // Load More Bools for various sections
     isItemsAvailable: boolean = true;
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     private firestore: Firestore,
-  ) { }
+  ) {
+    this.getMenIndian()
+    this.getMenAccessories()
+    this.getMenFootwear()
+    this.getWomenIndian()
+    this.getWomenAccessories()
+    this.getWomenFootwear()
+  }
+
+  public onLoad(){
+    this.getBottomwear()
+    this.getTopwear()
+    this.getWesternwear()
+    this.getWesternwear()
+  }
+
 
   getWindowRef = (): Window => this.doc.defaultView as Window;
   getCollectionRef = (collectionName: string): CollectionReference<DocumentData> => collection(this.firestore, collectionName);
@@ -86,76 +101,33 @@ export class DbService {
   }
 
 
-  getHomeMenIndian() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_INDIAN_COLLECTION, 'menIndianStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
   
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+
+  async getMenIndian() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.MEN_INDIAN_COLLECTION), (snapshot) => {
+      this.menIndianSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })
   }
 
-  getAllMenIndian() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_INDIAN_COLLECTION, 'menIndianStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
-  }
-
-  getHomeMenAccessories() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_ACCESSORIES_COLLECTION, 'menAccessoriesStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+  async getMenAccessories() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.MEN_ACCESSORIES_COLLECTION), (snapshot) => {
+      this.menAccessoriesSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })
   }
 
-  getAllMenAccessories() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_ACCESSORIES_COLLECTION, 'menAccessoriesStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
-  }
-
-  getHomeMenFootwear() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_FOOTWEAR_COLLECTION, 'menFootwearStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+  async getMenFootwear() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.MEN_FOOTWEAR_COLLECTION), (snapshot) => {
+      this.menFootwearSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })
-  }
-
-  getAllMenFootwear() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.MEN_FOOTWEAR_COLLECTION, 'menFootwearStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
   }
 
   async getTopwear() {
@@ -176,90 +148,28 @@ export class DbService {
     });
   }
 
-
-  getHomeWomenAccessories() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_ACCESSORIES_COLLECTION, 'womenAccessoriesStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+  async getWomenAccessories() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.WOMEN_ACCESSORIES_COLLECTION), (snapshot) => {
+      this.womenAccessoriesSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })
   }
 
-  getAllWomenAccessories() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_ACCESSORIES_COLLECTION, 'womenAccessoriesStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
-  }
-
-  getHomeWomenIndian() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_INDIAN_COLLECTION, 'womenIndianStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+  async getWomenIndian() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.WOMEN_INDIAN_COLLECTION), (snapshot) => {
+      this.womenIndianSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })
   }
 
-  getAllWomenIndian() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_INDIAN_COLLECTION, 'womenIndianStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
-  }
-
-  getHomeWomenFootwear() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_ACCESSORIES_COLLECTION, 'womenFootwearStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
-      }));
-      this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
-    })
-  }
-
-  getAllWomenFootwear() {
-    let lastDoc = this.menIndianLastDoc.value;
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WOMEN_ACCESSORIES_COLLECTION, 'womenFootwearStatus', 'addedOn', true),
-      startAfter(lastDoc)
-    );
-  }
-
-  getHomeWesternwear() {
-    let queryRef = query(
-      this.getQueryRef(CONSTANTS.WESTERNWEAR_COLLECTION, 'menIndianStatus', 'addedOn', true),
-      limit(this.$HOME_DOC_LIMIT)
-    );
-  
-    const unsub = onSnapshot(queryRef, (snapshot) => {
-      this.isItemsAvailable = snapshot.size === this.$HOME_DOC_LIMIT
-      this.homeMenIndianSubject.next(snapshot.docs.map((ele) => {
-        this.menIndianLastDoc.next(ele);
-        return ele.data();
+  async getWomenFootwear() {
+    const unsub = onSnapshot(this.getCollectionRef(CONSTANTS.WOMEN_FOOTWEAR_COLLECTION), (snapshot) => {
+      this.womenFootwearSubject.next(snapshot.docs.map(e => {
+        return e.data()
       }));
       this.getWindowRef().setTimeout(() => unsub(), this.timeoutInterval * 6);
     })

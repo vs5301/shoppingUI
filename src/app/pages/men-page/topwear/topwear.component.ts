@@ -1,4 +1,6 @@
 import { Component,OnInit } from '@angular/core';
+import { CollectionReference, DocumentData, doc, setDoc } from 'firebase/firestore';
+import { CART_COLLECTION } from 'src/app/constants';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { DbService } from 'src/app/services/db.service';
 export class TopwearComponent implements OnInit{
 
   topwearList: any[] = []
+  collectionRef!: CollectionReference<DocumentData>
 
   constructor(
     private dbService: DbService
@@ -16,6 +19,7 @@ export class TopwearComponent implements OnInit{
 
   ngOnInit(): void {
     this.getData()
+    this.collectionRef = this.dbService.getCollectionRef(CART_COLLECTION)
   }
 
   getData(){
@@ -25,6 +29,16 @@ export class TopwearComponent implements OnInit{
         this.topwearList = [...value]
         this.dbService.getWindowRef().setTimeout(() => topwearSub.unsubscribe, this.dbService.timeoutInterval * 6)
       }
+    })
+  }
+
+  addToCart(values: any){
+    let docRef = doc(this.collectionRef);
+    setDoc(docRef, { ...values }, { merge: true })
+    .then(() => {
+      console.log("Success")
+    }, (error) => {
+      console.log(error)
     })
   }
 }

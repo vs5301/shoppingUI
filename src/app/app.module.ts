@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TopwearComponent } from './pages/men-page/topwear/topwear.component';
 import { BottomwearComponent } from './pages/men-page/bottomwear/bottomwear.component';
 import { WesternwearComponent } from './pages/women-page/westernwear/westernwear.component';
+import { DbService } from './services/db.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,17 @@ import { WesternwearComponent } from './pages/women-page/westernwear/westernwear
     MatDialogModule,
     NgbCarouselModule
   ],
-  providers: [],
+  providers: [
+    DbService,
+    { 
+      provide: APP_INITIALIZER,
+      useFactory: function(dbService: DbService) {
+        return () => dbService.onLoad();
+      },
+      deps: [DbService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

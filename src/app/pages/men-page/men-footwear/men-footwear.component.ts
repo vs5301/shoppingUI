@@ -1,4 +1,6 @@
 import { Component,OnInit } from '@angular/core';
+import { CollectionReference, DocumentData, doc, setDoc } from 'firebase/firestore';
+import { CART_COLLECTION } from 'src/app/constants';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,32 +11,34 @@ import { DbService } from 'src/app/services/db.service';
 export class MenFootwearComponent implements OnInit{
 
   menFootwearList: any[] = []
+  collectionRef!: CollectionReference<DocumentData>
 
   constructor(
     private dbService: DbService
   ){}
 
-  ngOnInit(): void {
-    this.getInitialData()
+  ngOnInit(){
+    this.collectionRef = this.dbService.getCollectionRef(CART_COLLECTION)
+    this.getData()
   }
 
-  getInitialData(){
-    let menFootwearSub = this.dbService.homeMenAccessoriesSubject.subscribe((value) => {
+  getData(){
+    if(this.dbService.menFootwearSubject.value.length === 0) this.dbService.getMenFootwear()
+    let menFootwearSub = this.dbService.menFootwearSubject.subscribe((value) => {
       if(value.length !== 0){
         this.menFootwearList = [...value]
-        this.getRemainingData()
-        this.dbService.getWindowRef().setTimeout(() => menFootwearSub.unsubscribe(), this.dbService.timeoutInterval * 6)
+        this.dbService.getWindowRef().setTimeout(() => menFootwearSub.unsubscribe, this.dbService.timeoutInterval * 6)
       }
     })
   }
 
-  getRemainingData(){
-    this.dbService.getAllMenFootwear()
-    let menFootwearSub = this.dbService.menFootwearSubject.subscribe((value) => {
-      if(value.length !== 0){
-        this.menFootwearList = this.menFootwearList.concat(value)
-        this.dbService.getWindowRef().setTimeout(() => menFootwearSub.unsubscribe(), this.dbService.timeoutInterval * 6)
-      }
+  addToCart(values: any){
+    let docRef = doc(this.collectionRef);
+    setDoc(docRef, { ...values }, { merge: true })
+    .then(() => {
+      console.log("Success")
+    }, (error) => {
+      console.log(error)
     })
   }
 }

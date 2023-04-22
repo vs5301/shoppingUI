@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-      
+      this.getDataFromDbService()
   }
 
   getDataFromDbService(){
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit{
       }
     })
 
-    let homeWomenAccessoriesSub = this.dbService.homeMenAccessoriesSubject.subscribe((value) => {
+    let homeWomenAccessoriesSub = this.dbService.homeWomenAccessoriesSubject.subscribe((value) => {
       if(value!== null){
         this.womenAccessoriesList = value
         this.dbService.getWindowRef().setTimeout(() => homeWomenAccessoriesSub.unsubscribe(), this.dbService.timeoutInterval * 60)
